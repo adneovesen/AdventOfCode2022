@@ -17,25 +17,25 @@ namespace AdventOfCode2022.Dec4
             foreach(var line in lines)
             {
                 var sections = line.Split(",");
-                var firstSection = sections[0].Split("-");
-                var secondSection = sections[1].Split("-");
+                var firstSection = sections[0].Split("-").Select(int.Parse).ToArray();
+                var secondSection = sections[1].Split("-").Select(int.Parse).ToArray();
 
-                if (int.Parse(firstSection[0]) == int.Parse(secondSection[0]) || int.Parse(firstSection[1]) == int.Parse(secondSection[1]))
+                if (firstSection[0] == secondSection[0] || firstSection[1] == secondSection[1])
                 {
                     score++;
                     continue;
                 }
-                if(int.Parse(firstSection[0]) < int.Parse(secondSection[0]))
+                if(firstSection[0] < secondSection[0])
                 {
-                    if(int.Parse(firstSection[1]) > int.Parse(secondSection[1]))
+                    if(firstSection[1] > secondSection[1])
                     {
                         score++;
                         continue;
                     }
                 }
-                if (int.Parse(firstSection[0]) > int.Parse(secondSection[0]))
+                if (firstSection[0] > secondSection[0])
                 {
-                    if (int.Parse(firstSection[1]) < int.Parse(secondSection[1]))
+                    if (firstSection[1] < secondSection[1])
                     {
                         score++;
                         continue;
