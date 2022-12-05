@@ -60,9 +60,8 @@ namespace AdventOfCode2022.Dec5
                     MoveCratesPartTwo(stacks, amount, from, to);
                 } else
                 {
-                    MoveCreates(stacks, amount, from, to);
+                    MoveCrates(stacks, amount, from, to);
                 }
-                
             }
 
             var TopOfTheLine = "";
@@ -89,7 +88,7 @@ namespace AdventOfCode2022.Dec5
         }
         
 
-        private static void MoveCreates(List<Stack<char>> stacks, int amount, int from, int to)
+        private static void MoveCrates(List<Stack<char>> stacks, int amount, int from, int to)
         {
             for(var i = 0; i < amount; i++)
             {
