@@ -10,14 +10,11 @@ namespace AdventOfCode2022.Dec3
     {
         public static int SumOfItemsInBothCompartments(string path)
         {
-            var lines = File.ReadAllLines(path);
             var score = 0;
-            foreach(var line in lines)
+            foreach(var line in File.ReadLines(path))
             {
                 var firsthalf = line.Substring(0, line.Length / 2);
                 var secondhalf = line.Substring(line.Length / 2, line.Length / 2);
-
-                // not ideal or most effective way of finding the union
                 var common = firsthalf.Intersect(secondhalf);
 
                 score += FindScore(common);
@@ -32,7 +29,6 @@ namespace AdventOfCode2022.Dec3
             var score = 0;
             for(int i = 0; i < lines.Length ; i += 3)
             {
-                // this is some jank ass shit, if it works give me a medal 
                 var common = lines[i].Intersect(lines[i + 1].Intersect(lines[i + 2]));
 
                 score += FindScore(common);
