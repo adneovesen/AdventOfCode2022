@@ -11,10 +11,9 @@ namespace AdventOfCode2022.Dec4
     {
         public static int RangeFullyContained(string path)
         {
-            var lines = File.ReadAllLines(path);
             var score = 0;
 
-            foreach(var line in lines)
+            foreach(var line in File.ReadLines(path))
             {
                 var sections = line.Split(",");
                 var firstSection = sections[0].Split("-").Select(int.Parse).ToArray();
@@ -48,10 +47,9 @@ namespace AdventOfCode2022.Dec4
 
         public static int RangeOverlap(string path)
         {
-            var lines = File.ReadAllLines(path);
             var score = 0;
 
-            foreach (var line in lines)
+            foreach (var line in File.ReadLines(path))
             {
                 var sections = line.Split(",");
 

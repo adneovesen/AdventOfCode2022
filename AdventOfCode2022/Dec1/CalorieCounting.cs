@@ -10,11 +10,9 @@ namespace AdventOfCode2022.Dec1
     {
         public static int GetCaloriesFromTopElves(string path, int numberOfElves = 1)
         {
-            string[] lines = File.ReadAllLines(path);
-            
             var calorie = 0;
             var calories = new List<int>();
-            foreach (var line in lines)
+            foreach (var line in File.ReadLines(path))
             {
                 if (string.IsNullOrEmpty(line))
                 {

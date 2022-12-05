@@ -11,9 +11,8 @@ namespace AdventOfCode2022.Dec2
         public static int TotalScoreFromTournament(string path, bool partTwo = false)
         {
             var totalScore = 0;
-            string[] lines = File.ReadAllLines(path);
 
-            foreach(var line in lines)
+            foreach(var line in File.ReadLines(path))
             {
                 var character = line.Split(' ');
                 var firstInput = GetValue(character[0]);
