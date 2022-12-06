@@ -4,6 +4,7 @@ using AdventOfCode2022.Dec2;
 using AdventOfCode2022.Dec3;
 using AdventOfCode2022.Dec4;
 using AdventOfCode2022.Dec5;
+using AdventOfCode2022.Dec6;
 
 var path = "..\\..\\..\\Dec1\\input.txt";
 /*
@@ -26,8 +27,13 @@ path = "..\\..\\..\\Dec4\\input.txt";
 Console.WriteLine($"In how many assignment pairs does one range fully contain the other? Answer : {CampCleanup.RangeFullyContained(path)}");
 
 Console.WriteLine($"In how many assignment pairs do the ranges overlap? Answer: {CampCleanup.RangeOverlap(path)}");
-*/
+
 path = "..\\..\\..\\Dec5\\test.txt";
 Console.WriteLine($"After the rearrangement procedure completes, what crate ends up on top of each stack? Answer : {SupplyStacks.RearrangementProcedure(path)}");
 
 Console.WriteLine($"After the rearrangement procedure completes, what crate ends up on top of each stack? Answer : {SupplyStacks.RearrangementProcedure(path, true)}");
+*/
+path = "..\\..\\..\\Dec6\\input.txt";
+Console.WriteLine($"How many characters need to be processed before the first start-of-packet marker is detected? Answer : {TurningTrouble.StartOfPacketMarker(path)}");
+
+Console.WriteLine($"How many characters need to be processed before the first start-of-message marker is detected? Answer : {TurningTrouble.StartOfPacketMarker(path, true)}");
