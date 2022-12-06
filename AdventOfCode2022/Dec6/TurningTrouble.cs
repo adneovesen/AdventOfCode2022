@@ -12,15 +12,12 @@ namespace AdventOfCode2022.Dec6
     {
         public static int StartOfPacketMarker(string path, bool partTwo = false)
         {
-            foreach(var line in File.ReadLines(path))
+            var line = File.ReadAllText(path);
+            if (partTwo)
             {
-                if (partTwo)
-                {
-                    return CharacterProcessing(line, 14);
-                }
-                return CharacterProcessing(line);
+                return CharacterProcessing(line, 14);
             }
-            return 0;
+            return CharacterProcessing(line);
         }
 
         private static int CharacterProcessing(string line, int length = 4)
