@@ -5,6 +5,7 @@ using AdventOfCode2022.Dec3;
 using AdventOfCode2022.Dec4;
 using AdventOfCode2022.Dec5;
 using AdventOfCode2022.Dec6;
+using AdventOfCode2022.Dec7;
 
 var path = "..\\..\\..\\Dec1\\input.txt";
 /*
@@ -32,8 +33,13 @@ path = "..\\..\\..\\Dec5\\test.txt";
 Console.WriteLine($"After the rearrangement procedure completes, what crate ends up on top of each stack? Answer : {SupplyStacks.RearrangementProcedure(path)}");
 
 Console.WriteLine($"After the rearrangement procedure completes, what crate ends up on top of each stack? Answer : {SupplyStacks.RearrangementProcedure(path, true)}");
-*/
+
 path = "..\\..\\..\\Dec6\\input.txt";
 Console.WriteLine($"How many characters need to be processed before the first start-of-packet marker is detected? Answer : {TurningTrouble.StartOfPacketMarker(path)}");
 
 Console.WriteLine($"How many characters need to be processed before the first start-of-message marker is detected? Answer : {TurningTrouble.StartOfPacketMarker(path, true)}");
+*/
+path = "..\\..\\..\\Dec7\\input.txt";
+Console.WriteLine($"What is the sum of the total sizes of those directories? Answer : {NoSpaceLeftOnDevice.SumOfDirectories(path)}");
+
+Console.WriteLine($"What is the total size of that directory?? Answer : {NoSpaceLeftOnDevice.SumOfDirectories(path, true)}");
