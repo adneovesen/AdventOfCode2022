@@ -6,6 +6,7 @@ using AdventOfCode2022.Dec4;
 using AdventOfCode2022.Dec5;
 using AdventOfCode2022.Dec6;
 using AdventOfCode2022.Dec7;
+using AdventOfCode2022.Dec8;
 
 var path = "..\\..\\..\\Dec1\\input.txt";
 /*
@@ -38,8 +39,13 @@ path = "..\\..\\..\\Dec6\\input.txt";
 Console.WriteLine($"How many characters need to be processed before the first start-of-packet marker is detected? Answer : {TurningTrouble.StartOfPacketMarker(path)}");
 
 Console.WriteLine($"How many characters need to be processed before the first start-of-message marker is detected? Answer : {TurningTrouble.StartOfPacketMarker(path, true)}");
-*/
+
 path = "..\\..\\..\\Dec7\\input.txt";
 Console.WriteLine($"What is the sum of the total sizes of those directories? Answer : {NoSpaceLeftOnDevice.SumOfDirectories(path)}");
 
 Console.WriteLine($"What is the total size of that directory?? Answer : {NoSpaceLeftOnDevice.SumOfDirectories(path, true)}");
+*/
+path = "..\\..\\..\\Dec8\\input.txt";
+Console.WriteLine($"how many trees are visible from outside the grid? Answer : {TreetopTreeHouse.NumberOfVisibleTrees(path)}");
+
+Console.WriteLine($"What is the highest scenic score possible for any tree? Answer : {TreetopTreeHouse.GetScenicScore(path)}");
