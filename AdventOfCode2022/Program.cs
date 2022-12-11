@@ -1,4 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using AdventOfCode2022.De11;
 using AdventOfCode2022.Dec1;
 using AdventOfCode2022.Dec2;
 using AdventOfCode2022.Dec3;
@@ -7,6 +8,7 @@ using AdventOfCode2022.Dec5;
 using AdventOfCode2022.Dec6;
 using AdventOfCode2022.Dec7;
 using AdventOfCode2022.Dec8;
+using AdventOfCode2022.Dec9;
 
 var path = "..\\..\\..\\Dec1\\input.txt";
 /*
@@ -44,8 +46,14 @@ path = "..\\..\\..\\Dec7\\input.txt";
 Console.WriteLine($"What is the sum of the total sizes of those directories? Answer : {NoSpaceLeftOnDevice.SumOfDirectories(path)}");
 
 Console.WriteLine($"What is the total size of that directory?? Answer : {NoSpaceLeftOnDevice.SumOfDirectories(path, true)}");
-*/
 path = "..\\..\\..\\Dec8\\input.txt";
 Console.WriteLine($"how many trees are visible from outside the grid? Answer : {TreetopTreeHouse.NumberOfVisibleTrees(path)}");
 
 Console.WriteLine($"What is the highest scenic score possible for any tree? Answer : {TreetopTreeHouse.GetScenicScore(path)}");
+path = "..\\..\\..\\Dec9\\test.txt";
+Console.WriteLine($"How many positions does the tail of the rope visit at least once? Answer : {RopeBridge.TailCalculation(path)}");
+*/
+path = "..\\..\\..\\Dec11\\test.txt";
+Console.WriteLine($"What is the level of monkey business after 20 rounds of stuff-slinging simian shenanigans? Answer : {MonkeyInTheMiddle.MonkeyBussiness(path)}");
+
+Console.WriteLine($"what is the level of monkey business after 10000 rounds? Answer : {MonkeyInTheMiddlePart2.MonkeyBussiness(path)}");
