@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,120 +9,75 @@ namespace AdventOfCode2022.Dec9
 {
     public class RopeBridge
     {
-        public static int TailCalculation(string path)
+        public static int CountTailPositions(string path, int knots = 2)
         {
-            var headRow = 0;
-            var headCollumn = 0;
-            var tailRow = 0;
-            var tailCollumn = 0;
+            var input = File.ReadLines(path)
+                .Select(line => line.Split(' ', 2))
+                .Select(x => (direction: x[0][0], count: int.Parse(x[1])))
+                .ToList();
 
-            var tailPositions = new HashSet<(int, int)>();
+            var moves = from cmd in input
+                        from d in Enumerable.Repeat(cmd.direction, cmd.count)
+                        select d;
 
-            foreach (var line in File.ReadLines(path))
+            var current = Rope.Create(knots);
+            HashSet<Point> tailPositions = new() { current.Tail };
+            foreach (var direction in moves)
             {
-                var split = line.Split(" ");
-
-                var direction = split[0];
-                var distance = int.Parse(split[1]);
-
-                switch (direction)
-                {
-                    case "R":
-                        headRow += distance;
-                        break;
-                    case "L":
-                        headRow -= distance;
-                        break;
-                    case "U":
-                        headCollumn += distance;
-                        break;
-                    case "D":
-                        headCollumn -= distance;
-                        break;
-                }
-
-                while (headRow > tailRow || headRow == tailRow && headCollumn > tailCollumn)
-                {
-                    if (headCollumn > tailCollumn)
-                    {
-                        tailRow++;
-                        tailCollumn++;
-                    }
-                    else if (headCollumn < tailCollumn)
-                    {
-                        tailRow++;
-                        tailCollumn--;
-                    }
-                    else
-                    {
-                        tailRow++;
-                    }
-
-                    tailPositions.Add((tailRow, tailCollumn));
-                }
-
-                while (headRow < tailRow || headRow == tailRow && headCollumn < tailCollumn)
-                {
-                    if (headCollumn > tailCollumn)
-                    {
-                        tailRow--;
-                        tailCollumn++;
-                    }
-                    else if (headCollumn < tailCollumn)
-                    {
-                        tailRow--;
-                        tailCollumn--;
-                    }
-                    else
-                    {
-                        tailRow--;
-                    }
-
-                    tailPositions.Add((tailRow, tailCollumn));
-                }
-
-                while (headCollumn > tailCollumn || headRow == tailRow && headCollumn > tailCollumn)
-                {
-                    if (headRow > tailRow)
-                    {
-                        tailRow++;
-                        tailCollumn++;
-                    }
-                    else if (headRow < tailRow)
-                    {
-                        tailRow--;
-                        tailCollumn++;
-                    }
-                    else
-                    {
-                        tailCollumn++;
-                    }
-                    tailPositions.Add((tailRow, tailCollumn));
-                }
-
-                while (headCollumn < tailCollumn || headRow == tailRow && headCollumn < tailCollumn)
-                {
-                    if (headRow > tailRow)
-                    {
-                        tailRow++;
-                        tailCollumn--;
-                    }
-                    else if (headRow < tailRow)
-                    {
-                        tailRow--;
-                        tailCollumn--;
-                    }
-                    else
-                    {
-                        tailCollumn--;
-                    }
-
-                    tailPositions.Add((tailRow, tailCollumn));
-                }
+                current = current.Move(direction);
+                tailPositions.Add(current.Tail);
             }
 
-            // Return the number of positions occupied by the tail.
-            return tailPositions.Count();
+            return tailPositions.Count;
         }
+
+        record struct Point(int X = 0, int Y = 0)
+        {
+            public Point Move(char direction)
+              => direction switch
+              {
+                  'L' => this with { X = X - 1 },
+                  'R' => this with { X = X + 1 },
+                  'U' => this with { Y = Y - 1 },
+                  'D' => this with { Y = Y + 1 },
+                  _ => this
+              };
+
+            public Point Follow(Point head)
+            {
+                var xdist = X - head.X;
+                var xabs = Math.Abs(xdist);
+
+                var ydist = Y - head.Y;
+                var yabs = Math.Abs(ydist);
+
+                if (xabs <= 1 && yabs <= 1)
+                    return this;
+                else if (xdist == 0 && Math.Abs(ydist) > 1)
+                    return this with { Y = Y - Math.Sign(ydist) };
+                else if (ydist == 0 && Math.Abs(xdist) > 1)
+                    return this with { X = X - Math.Sign(xdist) };
+                else
+                    return new(X - Math.Sign(xdist), Y - Math.Sign(ydist));
+            }
         }
+
+        record struct Rope(ImmutableArray<Point> Knots)
+        {
+            public Point Tail => Knots.Last();
+
+            public Rope Move(char direction)
+            {
+                var result = Knots.ToBuilder();
+                result[0] = result[0].Move(direction);
+                for (var i = 1; i < result.Count; ++i)
+                    result[i] = result[i].Follow(result[i - 1]);
+
+                return new(result.ToImmutable());
+            }
+
+            public static Rope Create(int length)
+              => new(Enumerable.Repeat(new Point(), length).ToImmutableArray());
+        }
+    }
 }

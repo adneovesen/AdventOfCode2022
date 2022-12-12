@@ -48,11 +48,13 @@ Console.WriteLine($"What is the sum of the total sizes of those directories? Ans
 Console.WriteLine($"What is the total size of that directory?? Answer : {NoSpaceLeftOnDevice.SumOfDirectories(path, true)}");
 path = "..\\..\\..\\Dec8\\input.txt";
 Console.WriteLine($"how many trees are visible from outside the grid? Answer : {TreetopTreeHouse.NumberOfVisibleTrees(path)}");
-
 Console.WriteLine($"What is the highest scenic score possible for any tree? Answer : {TreetopTreeHouse.GetScenicScore(path)}");
-path = "..\\..\\..\\Dec9\\test.txt";
-Console.WriteLine($"How many positions does the tail of the rope visit at least once? Answer : {RopeBridge.TailCalculation(path)}");
 */
+path = "..\\..\\..\\Dec9\\input.txt";
+Console.WriteLine($"How many positions does the tail of the rope visit at least once? Answer : {RopeBridge.CountTailPositions(path)}");
+
+Console.WriteLine($"How many positions does the tail of the rope visit at least once? Answer : {RopeBridge.CountTailPositions(path, 10)}");
+
 path = "..\\..\\..\\Dec11\\input.txt";
 Console.WriteLine($"What is the level of monkey business after 20 rounds of stuff-slinging simian shenanigans? Answer : {MonkeyInTheMiddle.MonkeyBussiness(path)}");
 
