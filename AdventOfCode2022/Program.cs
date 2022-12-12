@@ -53,7 +53,7 @@ Console.WriteLine($"What is the highest scenic score possible for any tree? Answ
 path = "..\\..\\..\\Dec9\\test.txt";
 Console.WriteLine($"How many positions does the tail of the rope visit at least once? Answer : {RopeBridge.TailCalculation(path)}");
 */
-path = "..\\..\\..\\Dec11\\test.txt";
+path = "..\\..\\..\\Dec11\\input.txt";
 Console.WriteLine($"What is the level of monkey business after 20 rounds of stuff-slinging simian shenanigans? Answer : {MonkeyInTheMiddle.MonkeyBussiness(path)}");
 
 Console.WriteLine($"what is the level of monkey business after 10000 rounds? Answer : {MonkeyInTheMiddlePart2.MonkeyBussiness(path)}");
