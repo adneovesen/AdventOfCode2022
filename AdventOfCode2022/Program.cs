@@ -1,6 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using AdventOfCode2022.De11;
 using AdventOfCode2022.Dec1;
+using AdventOfCode2022.Dec10;
+using AdventOfCode2022.Dec12;
 using AdventOfCode2022.Dec2;
 using AdventOfCode2022.Dec3;
 using AdventOfCode2022.Dec4;
@@ -49,13 +51,20 @@ Console.WriteLine($"What is the total size of that directory?? Answer : {NoSpace
 path = "..\\..\\..\\Dec8\\input.txt";
 Console.WriteLine($"how many trees are visible from outside the grid? Answer : {TreetopTreeHouse.NumberOfVisibleTrees(path)}");
 Console.WriteLine($"What is the highest scenic score possible for any tree? Answer : {TreetopTreeHouse.GetScenicScore(path)}");
-*/
 path = "..\\..\\..\\Dec9\\input.txt";
 Console.WriteLine($"How many positions does the tail of the rope visit at least once? Answer : {RopeBridge.CountTailPositions(path)}");
 
 Console.WriteLine($"How many positions does the tail of the rope visit at least once? Answer : {RopeBridge.CountTailPositions(path, 10)}");
 
-path = "..\\..\\..\\Dec11\\input.txt";
+path = "..\\..\\..\\Dec10\\input.txt";
+Console.WriteLine($"What is the sum of these six signal strengths? Answer : {CathodeRayTube.SignalStrength(path)}");
+
+CathodeRayTube.DrawScreen(path);
+
+path = "..\\..\\..\\Dec11\\test.txt";
 Console.WriteLine($"What is the level of monkey business after 20 rounds of stuff-slinging simian shenanigans? Answer : {MonkeyInTheMiddle.MonkeyBussiness(path)}");
 
 Console.WriteLine($"what is the level of monkey business after 10000 rounds? Answer : {MonkeyInTheMiddlePart2.MonkeyBussiness(path)}");
+*/
+path = "..\\..\\..\\Dec12\\test.txt";
+Console.WriteLine($"What is the fewest steps required to move from your current position to the location that should get the best signal? Answer : {HillClimbingAlgorithm.ShortestPath(path)}");
